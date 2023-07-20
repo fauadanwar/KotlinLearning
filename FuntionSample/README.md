@@ -1,0 +1,3 @@
+- FilterAndMap File contains function which doe filter, sequence and map operations.
+- WhatToDoToday File containing function which return string based on When conditions using inline function.
+- FeedTheFish file contains different functions which uses Random, ifelse and when conditions etc.
