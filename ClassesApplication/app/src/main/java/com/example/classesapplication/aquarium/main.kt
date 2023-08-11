@@ -6,8 +6,7 @@ fun main() {
     makeFish()
     val book = EBook("pdf","Harry Potter")
     book.readPage()
-    val sampleSpices: List<Spice> = listOf(Spice("Chilly", "hot"))
-    println("Spiciness = ${sampleSpices.first().spiciness}, heat = ${sampleSpices.first().heat}")
+    delegate()
 }
 
 fun buildAquarium()
@@ -42,4 +41,11 @@ fun makeFish() {
     val shark = Shark()
     val dolphin = Dolphin()
     println("Shark has ${shark.color} colour, they ${shark.eat()} and Dolphin has ${dolphin.color} colour, they ${dolphin.eat()}")
+}
+
+fun delegate() {
+    val goldPlaco = Placo()
+    val redPlaco = Placo(RedColour)
+    println("goldPlaco has ${goldPlaco.color} colour, they ${goldPlaco.eat()}")
+    println("redPlaco has ${redPlaco.color} colour, they ${redPlaco.eat()}")
 }
