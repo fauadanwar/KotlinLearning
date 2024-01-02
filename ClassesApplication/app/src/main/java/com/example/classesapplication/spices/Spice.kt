@@ -1,25 +1,33 @@
 package com.example.classesapplication.spices
 
+import com.example.classesapplication.aquarium.Colour
 
-abstract class Spice(name: String, val spiciness: String = "mild") {
+
+abstract class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor): SpiceColor by color {
     abstract fun prepareSpice()
-    var heat: Int = 0
-        get() {
-            return when (spiciness) {
-                "mild" -> 5
-                "hot" -> 10
-                else -> 0
-            }
-        }
-    init {
-        println("Spice name = $name and spiciness level = ${this.heat}")
+}
+interface Grinder {
+    fun grind()
+}
+interface SpiceColor {
+    val color: Colour
+}
+
+object YellowSpiceColor : SpiceColor {
+    override val color = Colour.YELLOW
+}
+class Curry(name: String, spiciness: String,
+            color: SpiceColor = YellowSpiceColor) : Spice(name, spiciness, color), Grinder {
+    override fun prepareSpice() {
+        println("Preparing Spice")
     }
+
+    override fun grind() {
+        println("Grinding Spice")
+    }
+
 }
 
-class Chilly: Spice {
-
-}
-
-class Curry(val spiciness: String): Spice {
-
+data class SpiceContainer(val spice: Spice){
+    val label: String = spice.name
 }
